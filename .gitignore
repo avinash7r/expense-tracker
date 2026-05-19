@@ -1,0 +1,21 @@
+# Secrets — never commit these
+.env
+.env.local
+.env.production
+server/.env
+frontend/.env
+
+# Dependencies
+node_modules/
+server/node_modules/
+frontend/node_modules/
+
+# React build output
+frontend/build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
