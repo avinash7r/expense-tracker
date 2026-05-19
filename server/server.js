@@ -181,3 +181,6 @@ app.get("/health", (_, res) => res.json({ status: "ok" }));
 initDB()
   .then(() => app.listen(PORT, () => console.log(`🚀 Server on port ${PORT}`)))
   .catch(console.error);
+
+
+    // just ofr testing ci-cd
