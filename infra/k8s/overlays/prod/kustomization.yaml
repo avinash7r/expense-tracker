@@ -20,8 +20,3 @@ configMapGenerator:
   - name: server-config
     envs:
       - config/app-config.env
-
-secretGenerator:
-  - name: server-secrets
-    envs:
-      - config/app-secrets.env
