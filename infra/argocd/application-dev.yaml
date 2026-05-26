@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: expense-tracker-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/avinash7r/expense-tracker.git
+    targetRevision: devops/ci-cd
+    path: infra/k8s/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          envFrom:
+            - configMapRef:
+                name: server-config
+            - secretRef:
+                name: server-secrets

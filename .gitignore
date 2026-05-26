@@ -19,3 +19,18 @@ npm-debug.log*
 
 # OS
 .DS_Store
+
+# Terraform state — contains secrets, never commit
+infra/terraform/*.tfstate
+infra/terraform/*.tfstate.backup
+infra/terraform/.terraform/
+infra/terraform/.terraform.lock.hcl
+
+# Kustomize secrets — never commit
+**/app-secrets.env
+
+# Local planning docs
+plan.md
+ISSUES.md
+ROADMAP.md
+GATEWAY_API_EXPLAINED.md
