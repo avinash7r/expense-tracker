@@ -1,0 +1,29 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: server-route
+spec:
+  parentRefs:
+    - name: shared-alb
+      namespace: infra
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /api
+      backendRefs:
+        - name: backend
+          port: 3001
+
+---
+
+apiVersion: gateway.k8s.aws/v1beta1
+kind: TargetGroupConfiguration
+metadata:
+  name: backend
+spec:
+  targetReference:
+    kind: Service
+    name: backend
+  defaultConfiguration:
+    targetType: ip

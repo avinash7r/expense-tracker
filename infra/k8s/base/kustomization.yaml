@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - client-deployment.yaml
   - server-deployment.yaml
+  - client-route.yaml

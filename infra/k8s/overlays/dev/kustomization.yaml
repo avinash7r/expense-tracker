@@ -15,6 +15,10 @@ images:
 
 patches:
   - path: patch-server.yaml
+  - path: patch-client-route.yaml
+    target:
+      kind: HTTPRoute
+      name: client-route
 
 configMapGenerator:
   - name: server-config
