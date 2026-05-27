@@ -1,4 +1,4 @@
-// Central API base URL — reads from env in prod, proxies in dev
+// Central API base URL - reads from env in prod, proxies in dev
 export const API_BASE = process.env.REACT_APP_API_URL || "";
 
 export function getToken() {
@@ -30,13 +30,19 @@ async function request(path, options = {}) {
 }
 
 export const api = {
-  register: (body) => request("/api/auth/register", { method: "POST", body: JSON.stringify(body) }),
-  login: (body) => request("/api/auth/login", { method: "POST", body: JSON.stringify(body) }),
+  register: (body) =>
+    request("/api/auth/register", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+  login: (body) =>
+    request("/api/auth/login", { method: "POST", body: JSON.stringify(body) }),
   getExpenses: (params = {}) => {
     const q = new URLSearchParams(params).toString();
     return request(`/api/expenses${q ? "?" + q : ""}`);
   },
-  addExpense: (body) => request("/api/expenses", { method: "POST", body: JSON.stringify(body) }),
+  addExpense: (body) =>
+    request("/api/expenses", { method: "POST", body: JSON.stringify(body) }),
   deleteExpense: (id) => request(`/api/expenses/${id}`, { method: "DELETE" }),
   getAnalytics: (year) => request(`/api/analytics?year=${year}`),
 };

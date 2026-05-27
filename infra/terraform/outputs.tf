@@ -1,20 +1,20 @@
 output "vpc_id" {
-  description = "VPC ID — used by EKS, RDS modules"
+  description = "VPC ID - used by EKS, RDS modules"
   value       = aws_vpc.main.id
 }
 
 output "public_subnet_ids" {
-  description = "Public subnet IDs — ALB target"
+  description = "Public subnet IDs - ALB target"
   value       = [aws_subnet.pub_1a.id, aws_subnet.pub_1b.id]
 }
 
 output "private_subnet_ids" {
-  description = "Private subnet IDs — EKS node groups"
+  description = "Private subnet IDs - EKS node groups"
   value       = [aws_subnet.pvt_1a.id, aws_subnet.pvt_1b.id]
 }
 
 output "rds_subnet_ids" {
-  description = "RDS subnet IDs — db subnet group"
+  description = "RDS subnet IDs - db subnet group"
   value       = [aws_subnet.rds_1a.id, aws_subnet.rds_1b.id]
 }
 

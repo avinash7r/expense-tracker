@@ -1,4 +1,4 @@
-# Secrets — never commit these
+# Secrets - never commit these
 .env
 .env.local
 .env.production
@@ -20,13 +20,13 @@ npm-debug.log*
 # OS
 .DS_Store
 
-# Terraform state — contains secrets, never commit
+# Terraform state - contains secrets, never commit
 infra/terraform/*.tfstate
 infra/terraform/*.tfstate.backup
 infra/terraform/.terraform/
 infra/terraform/.terraform.lock.hcl
 
-# Kustomize secrets — never commit
+# Kustomize secrets - never commit
 **/app-secrets.env
 
 # Local planning docs

@@ -23,7 +23,7 @@ resource "aws_nat_gateway" "nat_gw" {
   })
 }
 
-# Public route table — routes to IGW
+# Public route table - routes to IGW
 resource "aws_route_table" "rt_pub" {
   vpc_id = aws_vpc.main.id
 
@@ -47,7 +47,7 @@ resource "aws_route_table_association" "rta_pub_1b" {
   route_table_id = aws_route_table.rt_pub.id
 }
 
-# Private route table — routes outbound via NAT
+# Private route table - routes outbound via NAT
 resource "aws_route_table" "rt_pvt" {
   vpc_id = aws_vpc.main.id
 
@@ -71,7 +71,7 @@ resource "aws_route_table_association" "rta_pvt_1b" {
   route_table_id = aws_route_table.rt_pvt.id
 }
 
-# RDS route table — fully isolated, no default route
+# RDS route table - fully isolated, no default route
 resource "aws_route_table" "rt_rds" {
   vpc_id = aws_vpc.main.id
 
