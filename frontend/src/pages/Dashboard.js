@@ -23,7 +23,7 @@ export default function Dashboard({ user, onLogout }) {
   return (
     <div className="app-wrap">
       <header className="top-bar">
-        <div className="logo">💸 Spendwise</div>
+        <div className="logo">💸 Spendwise-dev</div>
         <div className="header-right">
           <span className="user-name">Hi, {user.name.split(" ")[0]}</span>
           <button className="logout-btn" onClick={onLogout}>Logout</button>

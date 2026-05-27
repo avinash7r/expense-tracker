@@ -65,6 +65,8 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:latest
             ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:${{ github.sha }}
+          build-args: |
+            REACT_APP_API_URL=${{ github.ref == 'refs/heads/main' && format('http://{0}', secrets.ALB_URL) || format('http://{0}/dev', secrets.ALB_URL) }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
