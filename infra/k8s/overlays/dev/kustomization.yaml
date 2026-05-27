@@ -9,7 +9,7 @@ namespace: dev
 
 images:
 - name: avinashrajure/expense-tracker-frontend
-  newTag: 70b7b3b6ddaa4a2688ccfab0b18b2a573dd22515
+  newTag: e262e9473d06b20958b630c7339845bcfb547ab7
 - name: avinashrajure/expense-tracker-server
   newTag: cc391369662fba5d184869ddde043eac94c6cd29
 
