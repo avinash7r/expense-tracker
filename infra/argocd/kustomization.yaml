@@ -6,6 +6,8 @@ resources:
   - namespace.yaml
   - argocd-route.yaml
   - argocd-tgc.yaml
+  - application-dev.yaml
+  - application-prod.yaml
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 patches:
