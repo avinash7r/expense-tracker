@@ -2,29 +2,29 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ../../base
-  - namespace.yaml
+- ../../base
+- namespace.yaml
 
 namespace: dev
 
 images:
-  - name: avinashrajure/expense-tracker-frontend
-    newTag: cc391369662fba5d184869ddde043eac94c6cd29
-  - name: avinashrajure/expense-tracker-server
-    newTag: cc391369662fba5d184869ddde043eac94c6cd29
+- name: avinashrajure/expense-tracker-frontend
+  newTag: 70b7b3b6ddaa4a2688ccfab0b18b2a573dd22515
+- name: avinashrajure/expense-tracker-server
+  newTag: cc391369662fba5d184869ddde043eac94c6cd29
 
 patches:
-  - path: patch-server.yaml
-  - path: patch-client-route.yaml
-    target:
-      kind: HTTPRoute
-      name: client-route
-  - path: patch-server-route.yaml
-    target:
-      kind: HTTPRoute
-      name: server-route
+- path: patch-server.yaml
+- path: patch-client-route.yaml
+  target:
+    kind: HTTPRoute
+    name: client-route
+- path: patch-server-route.yaml
+  target:
+    kind: HTTPRoute
+    name: server-route
 
 configMapGenerator:
-  - envs:
-      - config/app-config.env
-    name: server-config
+- envs:
+  - config/app-config.env
+  name: server-config
