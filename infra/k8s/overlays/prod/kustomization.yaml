@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
   - ../../base
   - namespace.yaml
+  - hpa-client.yaml
+  - hpa-server.yaml
 
 namespace: prod
 
