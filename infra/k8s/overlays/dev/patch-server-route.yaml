@@ -9,4 +9,4 @@
       urlRewrite:
         path:
           type: ReplacePrefixMatch
-          replacePrefixMatch: /
+          replacePrefixMatch: /api
