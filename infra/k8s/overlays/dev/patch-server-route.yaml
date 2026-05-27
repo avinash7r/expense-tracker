@@ -1,0 +1,12 @@
+- op: replace
+  path: /spec/rules/0/matches/0/path/value
+  value: /dev/api
+
+- op: add
+  path: /spec/rules/0/filters
+  value:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
