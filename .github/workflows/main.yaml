@@ -67,3 +67,49 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+
+  update-image-tags:
+    needs: [detect-changes, build-and-push]
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+
+      - name: update dev overlay
+        if: github.ref == 'refs/heads/devops/ci-cd'
+        run: |
+          if [ "${{ needs.detect-changes.outputs.frontend }}" == "true" ]; then
+            cd infra/k8s/overlays/dev
+            kustomize edit set image avinashrajure/expense-tracker-frontend:${{ github.sha }}
+            cd -
+          fi
+          if [ "${{ needs.detect-changes.outputs.server }}" == "true" ]; then
+            cd infra/k8s/overlays/dev
+            kustomize edit set image avinashrajure/expense-tracker-server:${{ github.sha }}
+            cd -
+          fi
+
+      - name: update prod overlay
+        if: github.ref == 'refs/heads/main'
+        run: |
+          if [ "${{ needs.detect-changes.outputs.frontend }}" == "true" ]; then
+            cd infra/k8s/overlays/prod
+            kustomize edit set image avinashrajure/expense-tracker-frontend:${{ github.sha }}
+            cd -
+          fi
+          if [ "${{ needs.detect-changes.outputs.server }}" == "true" ]; then
+            cd infra/k8s/overlays/prod
+            kustomize edit set image avinashrajure/expense-tracker-server:${{ github.sha }}
+            cd -
+          fi
+
+      - name: commit and push
+        run: |
+          git config user.email "ci@github.com"
+          git config user.name "GitHub Actions"
+          git add infra/k8s/overlays/
+          git diff --staged --quiet || \
+            git commit -m "ci: update image tags to ${{ github.sha }}" && git push
+
+            
