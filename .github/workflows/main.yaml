@@ -72,9 +72,13 @@ jobs:
   update-image-tags:
     needs: [detect-changes, build-and-push]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: update dev overlay
         if: github.ref == 'refs/heads/devops/ci-cd'
